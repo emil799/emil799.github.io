@@ -15,6 +15,7 @@
 </head>
 <body>
     <h1><span>T</span><span>i</span><span>c</span> <span>T</span><span>a</span><span>c</span> <span>T</span><span>o</span><span>e</span></h1>
+    <p id="score"></p>
     <div class="options">
         <button class="option-button" onclick="startGame('pvp')">Play Against Player</button>
         <button class="option-button" onclick="startGame('bot')">Play Against Bot</button>
@@ -39,6 +40,8 @@
 
 <script>
     let gameType = '';
+    let playerXScore = 0;
+    let playerOScore = 0;
     let currentPlayer = 'X';
     let gameState = ['', '', '', '', '', '', '', '', ''];
     const winningCombos = [
@@ -47,6 +50,7 @@
       [0, 4, 8], [2, 4, 6]
     ];
     const cells = document.querySelectorAll('.cell');
+    const score = document.getElementById('score');
     const status = document.getElementById('status');
     const resetButton = document.getElementById('resetButton');
     const optionsDiv = document.querySelector('.options');
@@ -142,7 +146,12 @@
       for (const combo of winningCombos) {
         const [a, b, c] = combo;
         if (gameState[a] !== '' && gameState[a] === gameState[b] && gameState[a] === gameState[c]) {
-          return true;
+          if (gameState[a] === 'X') {
+        playerXScore++;
+      } else if (gameState[a] === 'O') {
+        playerOScore++;
+      }
+      return true;
         }
       }
       return false;
@@ -152,6 +161,7 @@
       currentPlayer = 'X';
       gameState = ['', '', '', '', '', '', '', '', ''];
       cells.forEach(cell => cell.textContent = '');
+      score.textContent = `Player X: ${playerXScore} | Player O: ${playerOScore}`;
       status.textContent = `Current player: ${currentPlayer}`;
       document.getElementById('resetButton').style.display = 'block';
     }
