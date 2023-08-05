@@ -1,5 +1,26 @@
+*{
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+::selection{
+  user-select: none;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
 body {
-    font-family: 'Poppins', sans-serif;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+html{
+  scroll-behavior: smooth;
+}
+body {
     text-align: center;
     background: linear-gradient(315deg, #6a93cb, #a4bfef 74%);
     color: #fff;
