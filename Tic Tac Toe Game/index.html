@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Emil, Emil Medarov, CV, Portfolio, emilmedarov79, emil, emil medarov 79, Software Developer, Web Developer, Front-End Developer, Web, Емил, Емил Медаров, Портфолио, Софтуерен разработчик, Уеб разработчик, Уеб">
+    <meta name="description" content="An ordinary Portfolio Website">
+    <meta name="author" content="Emil Medarov">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="image/png" href="ïmages/icon.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="images/icon.png" sizes="32x32">
+    <link rel="shortcut icon" type="image/x-icon" href="images/icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icon.png">
+    <title>Tic Tac Toe Game</title>
+</head>
+<body>
+    <h1><span>T</span><span>i</span><span>c</span> <span>T</span><span>a</span><span>c</span> <span>T</span><span>o</span><span>e</span></h1>
+    <div class="options">
+        <button class="option-button" onclick="startGame('pvp')">Play Against Player</button>
+        <button class="option-button" onclick="startGame('bot')">Play Against Bot</button>
+</div>
+<div class="game-content" style="display: none;">
+  <div class="board" id="board">
+  <div class="cell" onclick="makeMove(0)"></div>
+  <div class="cell" onclick="makeMove(1)"></div>
+  <div class="cell" onclick="makeMove(2)"></div>
+  <div class="cell" onclick="makeMove(3)"></div>
+  <div class="cell" onclick="makeMove(4)"></div>
+  <div class="cell" onclick="makeMove(5)"></div>
+  <div class="cell" onclick="makeMove(6)"></div>
+  <div class="cell" onclick="makeMove(7)"></div>
+  <div class="cell" onclick="makeMove(8)"></div>
+</div>
+<p id="status"></p>
+</div>
+<button id="resetButton" onclick="resetGame()">Reset</button>
+
+
+
+<script>
+    let gameType = '';
+    let currentPlayer = 'X';
+    let gameState = ['', '', '', '', '', '', '', '', ''];
+    const winningCombos = [
+      [0, 1, 2], [3, 4, 5], [6, 7, 8],
+      [0, 3, 6], [1, 4, 7], [2, 5, 8],
+      [0, 4, 8], [2, 4, 6]
+    ];
+    const cells = document.querySelectorAll('.cell');
+    const status = document.getElementById('status');
+    const resetButton = document.getElementById('resetButton');
+    const optionsDiv = document.querySelector('.options');
+    const gameContentDiv = document.querySelector('.game-content');
+
+
+    function startGame(type) {
+    gameType = type;
+    optionsDiv.style.display = 'none';
+    gameContentDiv.style.display = 'block';
+    status.textContent = `Current player: X`;
+    resetButton.style.display = 'block';
+  }
+    
+    
+    
+    function makeMove(cellIndex) {
+    if (gameState[cellIndex] === '' && !checkWinner()) {
+      gameState[cellIndex] = currentPlayer;
+      cells[cellIndex].textContent = currentPlayer;
+      if (checkWinner()) {
+        status.textContent = `Player ${currentPlayer} wins!`;
+        resetButton.style.display = 'block';
+      } else if (gameState.every(cell => cell !== '')) {
+        status.textContent = "It's a draw!";
+        resetButton.style.display = 'block';
+      } else {
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        status.textContent = `Current player: ${currentPlayer}`;
+      }
+      if (gameType === 'bot' && currentPlayer === 'O') {
+          makeBotMove();
+        }
+    }
+  }
+  
+  function makeBotMove() {
+  const winningCombos = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8],
+    [0, 3, 6], [1, 4, 7], [2, 5, 8],
+    [0, 4, 8], [2, 4, 6]
+  ];
+
+  // First, check if the bot can win
+  for (const combo of winningCombos) {
+    const [a, b, c] = combo;
+    if (gameState[a] === 'O' && gameState[b] === 'O' && gameState[c] === '') {
+      makeMove(c);
+      return;
+    }
+    if (gameState[a] === 'O' && gameState[c] === 'O' && gameState[b] === '') {
+      makeMove(b);
+      return;
+    }
+    if (gameState[b] === 'O' && gameState[c] === 'O' && gameState[a] === '') {
+      makeMove(a);
+      return;
+    }
+  }
+
+  // Then, check if the bot needs to block the player from winning
+  for (const combo of winningCombos) {
+    const [a, b, c] = combo;
+    if (gameState[a] === 'X' && gameState[b] === 'X' && gameState[c] === '') {
+      makeMove(c);
+      return;
+    }
+    if (gameState[a] === 'X' && gameState[c] === 'X' && gameState[b] === '') {
+      makeMove(b);
+      return;
+    }
+    if (gameState[b] === 'X' && gameState[c] === 'X' && gameState[a] === '') {
+      makeMove(a);
+      return;
+    }
+  }
+
+  // If no winning or blocking moves, make a random move
+  let availableMoves = [];
+  for (let i = 0; i < gameState.length; i++) {
+    if (gameState[i] === '') {
+      availableMoves.push(i);
+    }
+  }
+
+  if (availableMoves.length > 0) {
+    const randomIndex = Math.floor(Math.random() * availableMoves.length);
+    makeMove(availableMoves[randomIndex]);
+  }
+}
+
+    function checkWinner() {
+      for (const combo of winningCombos) {
+        const [a, b, c] = combo;
+        if (gameState[a] !== '' && gameState[a] === gameState[b] && gameState[a] === gameState[c]) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    function resetGame() {
+      currentPlayer = 'X';
+      gameState = ['', '', '', '', '', '', '', '', ''];
+      cells.forEach(cell => cell.textContent = '');
+      status.textContent = `Current player: ${currentPlayer}`;
+      document.getElementById('resetButton').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
