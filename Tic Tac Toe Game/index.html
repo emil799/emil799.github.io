@@ -74,15 +74,17 @@
       if (checkWinner()) {
         status.textContent = `Player ${currentPlayer} wins!`;
         resetButton.style.display = 'block';
+        resetGame();
       } else if (gameState.every(cell => cell !== '')) {
         status.textContent = "It's a draw!";
         resetButton.style.display = 'block';
+        resetGame();
       } else {
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
         status.textContent = `Current player: ${currentPlayer}`;
       }
       if (gameType === 'bot' && currentPlayer === 'O') {
-          makeBotMove();
+        makeBotMove(); 
         }
     }
   }
