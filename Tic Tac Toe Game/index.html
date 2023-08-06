@@ -74,11 +74,9 @@
       if (checkWinner()) {
         status.textContent = `Player ${currentPlayer} wins!`;
         resetButton.style.display = 'block';
-        resetGame();
       } else if (gameState.every(cell => cell !== '')) {
         status.textContent = "It's a draw!";
         resetButton.style.display = 'block';
-        resetGame();
       } else {
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
         status.textContent = `Current player: ${currentPlayer}`;
@@ -144,20 +142,28 @@
   }
 }
 
-    function checkWinner() {
-      for (const combo of winningCombos) {
-        const [a, b, c] = combo;
-        if (gameState[a] !== '' && gameState[a] === gameState[b] && gameState[a] === gameState[c]) {
-          if (gameState[a] === 'X') {
-        playerXScore++;
-      } else if (gameState[a] === 'O') {
-        playerOScore++;
-      }
-      return true;
+function checkWinner() {
+  for (const combo of winningCombos) {
+    const [a, b, c] = combo;
+    if (gameState[a] !== '' && gameState[a] === gameState[b] && gameState[a] === gameState[c]) {
+      if (gameType === 'bot') {
+        if (gameState[a] === 'X') {
+          playerXScore += 2;
+        } else if (gameState[a] === 'O') {
+          playerOScore++;
+        }
+      } else {
+        if (gameState[a] === 'X') {
+          playerXScore++;
+        } else if (gameState[a] === 'O') {
+          playerOScore++;
         }
       }
-      return false;
+      return true;
     }
+  }
+  return false;
+}
 
     function resetGame() {
       currentPlayer = 'X';
