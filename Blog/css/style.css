@@ -35,6 +35,12 @@ body{
     font-weight: bolder;
     margin: 0;
 }
+.logo{
+  width: 140px;
+  display: flex;
+  align-items: left;
+  justify-content: left;
+}
 #blog{
   width: 85%;
   margin: 100px auto 0;
@@ -123,7 +129,15 @@ body{
     align-items: center;
     justify-content: center;
 }
-
+.copyright{
+  width: 100%;
+  text-align: center;
+  padding: 25px 0;
+  background: #262626;
+  color: #0095ff;
+  font-weight: 300;
+  margin-top: 20px;
+}
 @media only screen and (max-width: 600px) {
     body {
       font-size: 14px;
@@ -132,7 +146,6 @@ body{
     .title {
       font-size: 28px;
     }
-    
     #blog {
       width: 95%;
     }
@@ -166,6 +179,9 @@ body{
       text-align: right;
       margin-top: 10px;
     }
+    .copyright{
+      font-size: 14px;   
+     }
   }
 
   @media screen and (max-width: 1200px) and (min-width: 600px) {
@@ -215,4 +231,7 @@ body{
       width: 100%;
       object-fit: cover;
     }
+    .copyright{
+      font-size: 16px;   
+     }
   }
