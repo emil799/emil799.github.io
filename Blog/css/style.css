@@ -28,9 +28,7 @@ body{
     line-height: 1.5;
 }
 .title{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
     font-size: 36px;
     font-weight: bolder;
     margin: 0;
