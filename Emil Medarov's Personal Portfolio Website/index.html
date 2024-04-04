@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N9BWNMBMEP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N9BWNMBMEP');
+</script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Emil, Emil Medarov, CV, Portfolio, emilmedarov79, emil, emil medarov 79, Software Developer, Web Developer, Front-End Developer, Web, Емил, Емил Медаров, Портфолио, Софтуерен разработчик, Уеб разработчик, Уеб">
+    <meta name="description" content="An ordinary Portfolio Website">
+    <meta name="author" content="Emil Medarov">
+    <title>Emil Medarov's Personal Portfolio Website | Emil.</title>
+    <link rel="icon" href="image/png" href="ïmages/icon.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="images/icon.png" sizes="32x32">
+    <link rel="shortcut icon" type="image/x-icon" href="images/icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icon.png">
+    <link rel="canonical" href="https://emilmedarov79.000webhostapp.com/">
+    <link rel="stylesheet" href="css/mystyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="images/logo.png" class="logo">
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><div id="sound">
+                        <audio id="myAudio">
+                          <source src="Codeko - Crest [NCS Release].mp3" />
+                        </audio>
+                        <i class="fab fa-soundcloud sound-cloud"></i>
+                        <span>Sound</span>
+                        <div class="on-off">
+                          <span id="off">OFF</span>
+                          <span id="on">On</span>
+                        </div>
+                    </div></li>
+                    <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+                </ul>
+                <i class="fa-solid fa-bars" id="bars" onclick="openmenu()"></i>
+            </nav>
+            <label class="theme-switch">
+                <input type="checkbox" class="theme-switch__checkbox">
+                <div class="theme-switch__container">
+                  <div class="theme-switch__clouds"></div>
+                  <div class="theme-switch__stars-container">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z" fill="currentColor"></path>
+                    </svg>
+                  </div>
+                  <div class="theme-switch__circle-container">
+                    <div class="theme-switch__sun-moon-container">
+                      <div class="theme-switch__moon">
+                        <div class="theme-switch__spot"></div>
+                        <div class="theme-switch__spot"></div>
+                        <div class="theme-switch__spot"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </label>
+            <div class="header-text">
+                <p><span>S</span><span>o</span><span>f</span><span>t</span><span>w</span><span>a</span><span>r</span><span>e</span> <span>D</span><span>e</span><span>v</span><span>e</span><span>l</span><span>o</span><span>p</span><span>e</span><span>r</span></p>
+                <h1><span>H</span><span>i</span><span>,</span> <span>I</span><span>'</span><span>m</span> <span class="name">E</span><span class="name">m</span><span class="name">i</span><span class="name">l</span><br> <span>M</span><span>e</span><span>d</span><span>a</span><span>r</span><span>o</span><span>v</span> <span>F</span><span>r</span><span>o</span><span>m</span> <span>B</span><span>u</span><span>l</span><span>g</span><span>a</span><span>r</span><span>i</span><span>a</span></h1>
+            </div>
+        </div>
+        <div class="scroll-down">
+            <span>scroll down</span>
+            <i class="fas fa-arrow-down"></i>
+          </div>
+    
+          <div class="scroll-down scroll-down--left">
+            <span>scroll down</span>
+            <i class="fas fa-arrow-down"></i>
+          </div>
+          <div class="bubbles">
+            <img src="images/bubble.png">
+            <img src="images/bubble.png">
+            <img src="images/bubble.png">
+            <img src="images/bubble.png">
+            <img src="images/bubble.png">
+            <img src="images/bubble.png">
+            <img src="images/bubble.png">
+        </div>
+        <div id="loader">
+        <div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+            <div class="loader-text">
+                <h1 class="loader-paragraph">The website is loading, please wait!</h1>
+            </div>
+            <div class="wheel"></div>
+            <div class="hamster">
+                <div class="hamster__body">
+                    <div class="hamster__head">
+                        <div class="hamster__ear"></div>
+                        <div class="hamster__eye"></div>
+                        <div class="hamster__nose"></div>
+                    </div>
+                    <div class="hamster__limb hamster__limb--fr"></div>
+                    <div class="hamster__limb hamster__limb--fl"></div>
+                    <div class="hamster__limb hamster__limb--br"></div>
+                    <div class="hamster__limb hamster__limb--bl"></div>
+                    <div class="hamster__tail"></div>
+                </div>
+            </div>
+            <div class="spoke"></div>
+        </div>
+        </div>
+    </div>
+    <!-- ----------about--------- -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/user.png">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>Hello!<br>
+                        My name is Emil Medarov.<br>
+                        I was born on February, 25th, 2001.<br>
+                        I finished my secondary education at the <br>
+                        "Hristo Botev" Language High School, Kardzhali(2015-2020).<br>
+                        I'm currently studying at Plovdiv University<br>
+                         "Paisii Hilendarski", majoring in Informatics.<br>
+                        I'm currently a third year student.<br>
+                        I'm from the class of 2020.<br>
+                        I have a good knowledge of English(spoken and written), I<br>
+                         also learned German, but I'm not that good at it...<br>
+                        I have computer skills.<br>
+                        I'm interested in HTML/CSS/Javascript,<br>
+                        Java/Swing, C/C++, C#, SQL/MySQL, Q.A.<br>
+                        and PHP.<br>
+                        I hope to do an internship.
+                    </p>
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>Web Design</span><br>Designing Web interfaces</li>
+                            <li><span>App Development</span><br>Java/Swing app Development</li>
+                            <li><span>Web App Development</span><br>Building Server Pages With PHP and MySQL</li>
+                            <li><span>Databases</span><br>I can work with SQL/MySQL</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="experience">
+                        <ul>
+                            <li><span>2022 - 2023</span><br>Finished this Portfolio Website</li>
+                            <li><span>2021 - 2022</span><br>Finished my first Portfolio Website</li>
+                            <li><span>2021 - 2022</span><br>Finished my first Application With Swing</li>
+
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>2024 - Current</span><br>I am considering studying a master's degree.</li>
+                            <li><span>2024</span><br>Graduated  from Plovdiv University "Paisii Hilendarski".</li>
+                            <li><span>2020</span><br>Graduated from "Hristo Botev" Language high school.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div id="scrollToTopBtn">
+            <i class="fa-solid fa-arrow-up"></i>
+        </div>
+    </div>
+<!-- ---------services---------- -->
+<div id="services">
+    <div class="container">
+        <h1 class="sub-title">My Services</h1>
+        <div class="services-list">
+            <div>
+                <i class="fa-solid fa-code"></i>
+                <h2>Web Design</h2>
+                <p>I'm the right person to do your Web Design.
+                    You can reach me through the contact section.</p>
+                <a href="web-design.html">Learn more</a>
+            </div>
+            <div>
+                <i class="fa-solid fa-laptop"></i>
+                <h2>App Development</h2>
+                <p>I can make good and functional applications.
+                    You can reach me through the contact section.</p>
+                <a href="app-development.html">Learn more</a>
+            </div>
+            <div>
+                <i class="fa-solid fa-globe"></i>
+                <h2>Web App Development</h2>
+                <p>I can make simple applications with PHP and SQL/MySQL.
+                    You can reach me through the contact section.</p>
+                <a href="web-app-development.html">Learn more</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- -------------------portfolio---------------- -->
+<div id="portfolio">
+    <div class="container">
+        <h1 class="sub-title">My Work</h1>
+        <div class="work-list">
+            <div class="work">
+                <img src="images/work-1.png">
+                <div class="layer">
+                    <h3>App for Renting a Car</h3>
+                    <p>The app connects you to the people and their cars.</p>
+                        <a href="https://github.com/emil799/RentACarSwingSQLWithEclipse" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/work-2.png">
+                <div class="layer">
+                    <h3>Web App for Rents</h3>
+                    <p>The app connects you to the people around the world.</p>
+                        <a href="https://github.com/emil799/RentsWithMySQL_HTML_PHP_WithWampServer" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/work-3.png">
+                <div class="layer">
+                    <h3>Portfolio Website</h3>
+                    <p>The app connects you to the talented people around the world.</p>
+                        <a href="https://github.com/emil799/MySecondPortfolio" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </div>
+        </div>
+        <a href="https://github.com/emil799" target="_blank" class="btn">See more</a>
+
+
+    </div>
+</div>
+<!-- ----------contact-------- -->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fa-solid fa-paper-plane"></i>medarov79@gmail.com</p>
+                <p><i class="fa-solid fa-square-phone"></i>+359882595077</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/emil0179" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
+                    <a href="https://github.com/emil799" target="_blank"><i class="fa-brands fa-square-github"></i></a>
+                </div>
+                <a href="my-cv.pdf" download class="btn btn2">Download CV</a>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="E-mail" placeholder="Your E-mail" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>Copyright © Emil. 2022 - 2023</p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const themeSwitchCheckbox = document.querySelector('.theme-switch__checkbox');
+
+    themeSwitchCheckbox.addEventListener('change', function () {
+        const isDarkMode = this.checked;
+        if (isDarkMode) {
+            document.body.classList.add('dark-theme');
+            document.body.classList.remove('light-theme');
+        } else {
+            document.body.classList.add('light-theme');
+            document.body.classList.remove('dark-theme');
+        }
+        // Save the user's preference to localStorage
+        localStorage.setItem('theme', isDarkMode ? 'dark-theme' : 'light-theme');
+    });
+
+    // Check the user's preference from previous sessions (if any)
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.body.classList.add(savedTheme);
+        themeSwitchCheckbox.checked = savedTheme === 'dark-theme';
+    }
+});
+
+
+</script>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  
+    const particles = [];
+  
+    class Particle {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 0.3 + 5;
+        this.speedX = Math.random() * 3 - 1.5;
+        this.speedY = Math.random() * 3 - 1.5;
+        this.color = getParticleColor(); // Set the initial particle color
+        this.shape = ['circle', 'triangle', 'square'][Math.floor(Math.random() * 3)];
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.size > 0.2) this.size -= 0.1;
+      }
+      draw() {
+        ctx.fillStyle = this.color;
+        if (this.shape === 'circle') {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (this.shape === 'triangle') {
+          ctx.beginPath();
+          ctx.moveTo(this.x, this.y - this.size);
+          ctx.lineTo(this.x - this.size, this.y + this.size);
+          ctx.lineTo(this.x + this.size, this.y + this.size);
+          ctx.closePath();
+          ctx.fill();
+        } else if (this.shape === 'square') {
+          ctx.fillRect(this.x - this.size / 2, this.y - this.size / 2, this.size, this.size);
+        }
+      }
+    }
+  
+    // Function to get the particle color based on the gradient background
+    function getParticleColor() {
+      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      gradient.addColorStop(0, '#6a93cb');
+      gradient.addColorStop(0.74, '#a4bfef');
+      return gradient;
+    }
+  
+    function createParticle(e) {
+      const particle = new Particle(e.clientX, e.clientY);
+      particles.push(particle);
+    }
+  
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((particle, index) => {
+        if (particle.size <= 0.2) particles.splice(index, 1);
+        particle.update();
+        particle.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+  
+    window.addEventListener('mousemove', createParticle);
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  
+    animate();
+</script>
+  
+<script>
+    // Function to show/hide the scroll-to-top button
+    function toggleScrollToTopBtn() {
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        const aboutSection = document.getElementById('about');
+        const lastSection = document.getElementById('contact');
+        const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+
+        // Show the button after the second section (About) until the last section (Contact)
+        if (scrollPosition >= aboutSection.offsetTop && scrollPosition <= lastSection.offsetTop + lastSection.offsetHeight) {
+            scrollToTopBtn.style.display = 'block';
+        } else {
+            scrollToTopBtn.style.display = 'none';
+        }
+    }
+
+    // Custom animation function for smooth scrolling with easing
+    function scrollToTop(duration) {
+            const start = window.pageYOffset || document.documentElement.scrollTop;
+            const startTime = performance.now();
+
+            function scrollStep(timestamp) {
+                const currentTime = timestamp || performance.now();
+                const progress = Math.min((currentTime - startTime) / duration, 1);
+                const easing = easeInOutQuad(progress);
+
+                window.scrollTo(0, start * (1 - easing));
+
+                if (progress < 1) {
+                    requestAnimationFrame(scrollStep);
+                }
+            }
+
+            function easeInOutQuad(t) {
+                return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+            }
+
+            requestAnimationFrame(scrollStep);
+        }
+
+    // Event listener for scrolling to toggle the visibility of the button
+    window.addEventListener('scroll', toggleScrollToTopBtn);
+
+    // Event listener for the scroll-to-top button click
+    document.getElementById('scrollToTopBtn').addEventListener('click', function() {
+            scrollToTop(1200); // Adjust the duration (in milliseconds) to control the scroll speed
+        });
+</script>
+
+<script>
+window.addEventListener('DOMContentLoaded', function () {
+    var loader = document.getElementById('loader');
+  
+    // Check if the loader has already been shown
+    if (!localStorage.getItem('loaderShown')) {
+      loader.style.display = 'flex'; // Show the loader
+  
+      // Function to remove the loader and set the flag in localStorage
+      function removeLoader() {
+        loader.style.display = 'none'; // Hide the loader
+        localStorage.setItem('loaderShown', true); // Set the flag in localStorage
+      }
+  
+      // Add delay to remove the loader after 5 seconds (adjust the time as needed)
+      setTimeout(removeLoader, 5000);
+    } else {
+      loader.style.display = 'none'; // Hide the loader if it has been shown before
+    }
+  });
+</script>
+<script>
+   document.onkeydown = function(e) {
+    if(e.keyCode == 123) {
+     return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
+     return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
+     return false;
+    }
+    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){
+     return false;
+    }
+
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)){
+     return false;
+    }      
+ }
+</script>
+
+<script>
+(function( win ){
+	var doc = win.document;
+	if( !location.hash && win.addEventListener ){
+		win.scrollTo( 0, 1 );
+		var scrollTop = 1,
+			getScrollTop = function(){
+				return win.pageYOffset || doc.compatMode === "CSS1Compat" && doc.documentElement.scrollTop || doc.body.scrollTop || 0;
+			},
+			bodycheck = setInterval(function(){
+				if( doc.body ){
+					clearInterval( bodycheck );
+					scrollTop = getScrollTop();
+					win.scrollTo( 0, scrollTop === 1 ? 0 : 1 );
+				}	
+			}, 15 );
+		win.addEventListener( "load", function(){
+			setTimeout(function(){
+				if( getScrollTop() < 20 ){
+					win.scrollTo( 0, scrollTop === 1 ? 0 : 1 );
+				}
+			}, 0);
+		}, false );
+	}
+})( this );
+</script>
+
+<script>
+    const soundCloud = document.querySelector('.sound-cloud')
+const off = document.querySelector('#off')
+const on = document.querySelector('#on')
+const myAudio = document.querySelector('#myAudio')
+
+off.addEventListener('click', () => soundTrack('off'))
+on.addEventListener('click', () => soundTrack('on'))
+
+const soundTrack = (soundState) => {
+  if (soundState === 'off') {
+    on.style.display = 'block'
+    off.style.display = 'none'
+    soundCloud.style.color = '#08fdd8'
+    myAudio.play()
+  } else if (soundState === 'on') {
+    on.style.display = 'none'
+    off.style.display = 'block'
+    soundCloud.style.color = '#f50057'
+    myAudio.pause()
+  }
+}
+</script>
+
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+        function opentab(tabname){
+            for(tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab")
+        }
+    </script>
+
+    <script>
+        var sidemenu = document.getElementById("sidemenu");
+        function openmenu(){
+            sidemenu.style.right = "0";
+        }
+        function closemenu(){
+         sidemenu.style.right = "-200px";   
+        }
+
+    </script>
+
+      <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyQlslRXSQ762DbUAmxjjIb0gfQQrhuNlP1aJdNyhNAR0Sjtv1Xsj5FcP2SF7KQBsA/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Message sent successfullly!"
+                setTimeout(function(){
+                    msg.innerHTML = ""
+                },5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+        
+</body>
+</html>
