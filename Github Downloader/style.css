@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(315deg, #6a93cb, #a4bfef 74%);
+}
+
+.container {
+    text-align: center;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+h1 span{
+    font-size: 36px;
+    margin-bottom: 20px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+  h1 span:hover{
+    animation: jello-horizontal 0.9s ease;
+  }
+  @keyframes jello-horizontal {
+    0% {
+        transform: scaleX(1);
+    }
+    30% {
+        transform: scaleX(1.25) scaleY(0.75);
+    }
+    40% {
+        transform: scaleX(0.75) scaleY(1.25);
+    }
+    50% {
+        transform: scaleX(1.15) scaleY(0.85);
+    }
+    65% {
+        transform: scaleX(0.95) scaleY(1.05);
+    }
+    75% {
+        transform: scaleX(1.05) scaleY(0.95);
+    }
+    100% {
+        transform: scaleX(1) scaleY(1);
+    }
+  }
+
+input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    margin-top: 20px;
+    color: red;
+}
+#paragraph{
+    position: absolute;
+    font-size: 16px;
+    color: black;
+    font-weight: 700;
+    top: 630px;
+    right: 60px;
+}
+.logo{
+    position: absolute;
+    top: 0;
+    left: 100px;
+    width: 140px;
+}
