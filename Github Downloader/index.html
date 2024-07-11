@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F7GXM5EMW0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-F7GXM5EMW0');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitHub Downloader</title>
@@ -12,12 +21,15 @@
     <link rel="icon" type="image/png" href="images/icon.png" sizes="32x32">
     <link rel="shortcut icon" type="image/x-icon" href="images/icon.png">
     <link rel="apple-touch-icon" sizes="180x180" href="images/icon.png">
+    <link rel="canonical" href="https://emil799.github.io/Github%20Downloader/">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
 </head>
 <body>
     <img src="images/logo.png" class="logo">
     <div class="container">
         <h1><span>G</span><span>i</span><span>t</span><span>H</span><span>u</span><span>b</span> <span>D</span><span>o</span><span>w</span><span>n</span><span>l</span><span>o</span><span>a</span><span>d</span><span>e</span><span>r</span></h1>
         <input type="text" id="githubUrl" placeholder="Paste GitHub repository URL here" title="Enter a GitHub repository URL, file URL, or directory URL">
+        <div id="tooltip" class="tooltip">Enter a GitHub repository URL, file URL, or directory URL</div>
         <button id="downloadBtn">Download</button>
         <p id="message"></p>
     </div>

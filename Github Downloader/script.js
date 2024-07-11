@@ -77,26 +77,22 @@ document.getElementById('downloadBtn').addEventListener('click', function() {
 
         messageElement.textContent = 'Fetching directory contents...';
 
-        fetch(apiUrl)
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error(`Error: ${response.status} ${response.statusText}`);
-                }
-            })
-            .then(data => {
-                // Traverse all items in the directory
-                data.forEach(item => {
-                    if (item.type === 'file') {
-                        // Download files if needed
-                        downloadFile(item.download_url, item.name);
-                    } else if (item.type === 'dir') {
-                        // Handle directories if needed
-                        console.log(`Found directory: ${item.name}`);
-                    }
-                });
-                messageElement.textContent = 'Download started!';
+        const zip = new JSZip();
+        fetchDirectoryContents(apiUrl, zip, directoryPath)
+            .then(() => {
+                zip.generateAsync({ type: 'blob' })
+                    .then(content => {
+                        const a = document.createElement('a');
+                        a.style.display = 'none';
+                        const url = window.URL.createObjectURL(content);
+                        a.href = url;
+                        a.download = `${directoryPath.split('/').pop()}.zip`;
+                        document.body.appendChild(a);
+                        a.click();
+                        window.URL.revokeObjectURL(url);
+                        document.body.removeChild(a);
+                        messageElement.textContent = 'Download started!';
+                    });
             })
             .catch(error => {
                 messageElement.textContent = `Failed to fetch directory contents: ${error.message}`;
@@ -106,28 +102,66 @@ document.getElementById('downloadBtn').addEventListener('click', function() {
     }
 });
 
-// Function to download a file
-function downloadFile(url, fileName) {
-    fetch(url)
+// Function to fetch directory contents recursively and add to zip
+function fetchDirectoryContents(apiUrl, zip, path) {
+    return fetch(apiUrl)
         .then(response => {
             if (response.ok) {
-                return response.blob();
+                return response.json();
             } else {
                 throw new Error(`Error: ${response.status} ${response.statusText}`);
             }
         })
-        .then(blob => {
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.style.display = 'none';
-            a.href = url;
-            a.download = fileName;
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);
-            document.body.removeChild(a);
-        })
-        .catch(error => {
-            console.error('Failed to download file:', error);
+        .then(data => {
+            const promises = data.map(item => {
+                if (item.type === 'file') {
+                    return fetch(item.download_url)
+                        .then(response => {
+                            if (response.ok) {
+                                return response.blob();
+                            } else {
+                                throw new Error(`Error: ${response.status} ${response.statusText}`);
+                            }
+                        })
+                        .then(blob => {
+                            const relativePath = item.path.replace(path + '/', '');
+                            zip.file(relativePath, blob);
+                        });
+                } else if (item.type === 'dir') {
+                    return fetchDirectoryContents(item.url, zip, path);
+                }
+            });
+            return Promise.all(promises);
         });
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const inputField = document.getElementById('githubUrl');
+    const tooltip = document.getElementById('tooltip');
+
+    // Show tooltip on small screens
+    function showTooltip() {
+        if (window.innerWidth <= 1200) {
+            tooltip.style.visibility = 'visible';
+            tooltip.style.opacity = '1';
+        }
+    }
+
+    // Hide tooltip when not on small screens
+    function hideTooltip() {
+            tooltip.style.visibility = 'hidden';
+            tooltip.style.opacity = '0';
+    }
+
+    // Add event listeners for input focus and blur
+    inputField.addEventListener('focus', showTooltip);
+    inputField.addEventListener('blur', hideTooltip);
+
+    // Initialize tooltip visibility based on screen size
+    hideTooltip();
+
+    // Update tooltip visibility on window resize
+    window.addEventListener('resize', hideTooltip);
+});
+
