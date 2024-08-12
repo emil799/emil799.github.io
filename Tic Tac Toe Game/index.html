@@ -39,141 +39,130 @@
 
 
 <script>
-    let gameType = '';
-    let playerXScore = 0;
-    let playerOScore = 0;
-    let currentPlayer = 'X';
-    let gameState = ['', '', '', '', '', '', '', '', ''];
-    const winningCombos = [
-      [0, 1, 2], [3, 4, 5], [6, 7, 8],
-      [0, 3, 6], [1, 4, 7], [2, 5, 8],
-      [0, 4, 8], [2, 4, 6]
-    ];
-    const cells = document.querySelectorAll('.cell');
-    const score = document.getElementById('score');
-    const status = document.getElementById('status');
-    const resetButton = document.getElementById('resetButton');
-    const optionsDiv = document.querySelector('.options');
-    const gameContentDiv = document.querySelector('.game-content');
-
-
-    function startGame(type) {
-    gameType = type;
-    optionsDiv.style.display = 'none';
-    gameContentDiv.style.display = 'block';
-    status.textContent = `Current player: X`;
-    resetButton.style.display = 'block';
-  }
-    
-    
-    
-    function makeMove(cellIndex) {
-    if (gameState[cellIndex] === '' && !checkWinner()) {
-      gameState[cellIndex] = currentPlayer;
-      cells[cellIndex].textContent = currentPlayer;
-      if (checkWinner()) {
-        status.textContent = `Player ${currentPlayer} wins!`;
-        resetButton.style.display = 'block';
-      } else if (gameState.every(cell => cell !== '')) {
-        status.textContent = "It's a draw!";
-        resetButton.style.display = 'block';
-      } else {
-        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-        status.textContent = `Current player: ${currentPlayer}`;
-      }
-      if (gameType === 'bot' && currentPlayer === 'O') {
-        makeBotMove(); 
-        }
-    }
-  }
-  
-  function makeBotMove() {
+  let gameType = '';
+  let playerXScore = 0;
+  let playerOScore = 0;
+  let currentPlayer = 'X';
+  let gameState = ['', '', '', '', '', '', '', '', ''];
   const winningCombos = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8],
     [0, 3, 6], [1, 4, 7], [2, 5, 8],
     [0, 4, 8], [2, 4, 6]
   ];
+  const cells = document.querySelectorAll('.cell');
+  const score = document.getElementById('score');
+  const status = document.getElementById('status');
+  const resetButton = document.getElementById('resetButton');
+  const optionsDiv = document.querySelector('.options');
+  const gameContentDiv = document.querySelector('.game-content');
 
-  // First, check if the bot can win
-  for (const combo of winningCombos) {
-    const [a, b, c] = combo;
-    if (gameState[a] === 'O' && gameState[b] === 'O' && gameState[c] === '') {
-      makeMove(c);
-      return;
-    }
-    if (gameState[a] === 'O' && gameState[c] === 'O' && gameState[b] === '') {
-      makeMove(b);
-      return;
-    }
-    if (gameState[b] === 'O' && gameState[c] === 'O' && gameState[a] === '') {
-      makeMove(a);
-      return;
-    }
+  function startGame(type) {
+      gameType = type;
+      optionsDiv.style.display = 'none';
+      gameContentDiv.style.display = 'block';
+      status.textContent = `Current player: X`;
+      resetButton.style.display = 'block';
   }
 
-  // Then, check if the bot needs to block the player from winning
-  for (const combo of winningCombos) {
-    const [a, b, c] = combo;
-    if (gameState[a] === 'X' && gameState[b] === 'X' && gameState[c] === '') {
-      makeMove(c);
-      return;
-    }
-    if (gameState[a] === 'X' && gameState[c] === 'X' && gameState[b] === '') {
-      makeMove(b);
-      return;
-    }
-    if (gameState[b] === 'X' && gameState[c] === 'X' && gameState[a] === '') {
-      makeMove(a);
-      return;
-    }
-  }
-
-  // If no winning or blocking moves, make a random move
-  let availableMoves = [];
-  for (let i = 0; i < gameState.length; i++) {
-    if (gameState[i] === '') {
-      availableMoves.push(i);
-    }
-  }
-
-  if (availableMoves.length > 0) {
-    const randomIndex = Math.floor(Math.random() * availableMoves.length);
-    makeMove(availableMoves[randomIndex]);
-  }
-}
-
-function checkWinner() {
-  for (const combo of winningCombos) {
-    const [a, b, c] = combo;
-    if (gameState[a] !== '' && gameState[a] === gameState[b] && gameState[a] === gameState[c]) {
-      if (gameType === 'bot') {
-        if (gameState[a] === 'X') {
-          playerXScore += 2;
-        } else if (gameState[a] === 'O') {
-          playerOScore++;
-        }
-      } else {
-        if (gameState[a] === 'X') {
-          playerXScore++;
-        } else if (gameState[a] === 'O') {
-          playerOScore++;
-        }
+  function makeMove(cellIndex) {
+      if (gameState[cellIndex] === '' && !checkWinner()) {
+          gameState[cellIndex] = currentPlayer;
+          cells[cellIndex].textContent = currentPlayer;
+          if (checkWinner()) {
+              status.textContent = `Player ${currentPlayer} wins!`;
+              resetButton.style.display = 'block';
+              if (currentPlayer === 'X') {
+                  playerXScore++;
+              } else {
+                  playerOScore++;
+              }
+          } else if (gameState.every(cell => cell !== '')) {
+              status.textContent = "It's a draw!";
+              resetButton.style.display = 'block';
+          } else {
+              currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+              status.textContent = `Current player: ${currentPlayer}`;
+              if (gameType === 'bot' && currentPlayer === 'O') {
+                  setTimeout(makeBotMove, 600); // Add a slight delay for bot move
+              }
+          }
       }
-      return true;
-    }
   }
-  return false;
-}
 
-    function resetGame() {
+  function makeBotMove() {
+      const winningCombos = [
+          [0, 1, 2], [3, 4, 5], [6, 7, 8],
+          [0, 3, 6], [1, 4, 7], [2, 5, 8],
+          [0, 4, 8], [2, 4, 6]
+      ];
+
+      // First, check if the bot can win
+      for (const combo of winningCombos) {
+          const [a, b, c] = combo;
+          if (gameState[a] === 'O' && gameState[b] === 'O' && gameState[c] === '') {
+              makeMove(c);
+              return;
+          }
+          if (gameState[a] === 'O' && gameState[c] === 'O' && gameState[b] === '') {
+              makeMove(b);
+              return;
+          }
+          if (gameState[b] === 'O' && gameState[c] === 'O' && gameState[a] === '') {
+              makeMove(a);
+              return;
+          }
+      }
+
+      // Then, check if the bot needs to block the player from winning
+      for (const combo of winningCombos) {
+          const [a, b, c] = combo;
+          if (gameState[a] === 'X' && gameState[b] === 'X' && gameState[c] === '') {
+              makeMove(c);
+              return;
+          }
+          if (gameState[a] === 'X' && gameState[c] === 'X' && gameState[b] === '') {
+              makeMove(b);
+              return;
+          }
+          if (gameState[b] === 'X' && gameState[c] === 'X' && gameState[a] === '') {
+              makeMove(a);
+              return;
+          }
+      }
+
+      // If no winning or blocking moves, make a random move
+      let availableMoves = [];
+      for (let i = 0; i < gameState.length; i++) {
+          if (gameState[i] === '') {
+              availableMoves.push(i);
+          }
+      }
+
+      if (availableMoves.length > 0) {
+          const randomIndex = Math.floor(Math.random() * availableMoves.length);
+          makeMove(availableMoves[randomIndex]);
+      }
+  }
+
+  function checkWinner() {
+      for (const combo of winningCombos) {
+          const [a, b, c] = combo;
+          if (gameState[a] !== '' && gameState[a] === gameState[b] && gameState[a] === gameState[c]) {
+              return true;
+          }
+      }
+      return false;
+  }
+
+  function resetGame() {
       currentPlayer = 'X';
       gameState = ['', '', '', '', '', '', '', '', ''];
       cells.forEach(cell => cell.textContent = '');
       score.textContent = `Player X: ${playerXScore} | Player O: ${playerOScore}`;
       status.textContent = `Current player: ${currentPlayer}`;
       document.getElementById('resetButton').style.display = 'block';
-    }
-  </script>
+  }
+</script>
 
 </body>
 </html>
