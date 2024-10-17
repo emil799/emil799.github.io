@@ -14,4 +14,4 @@
 [Emil. | GitHub Downloader](https://emil799.github.io/Github%20Downloader/)
 
 # emil799.github.io/Snake Game
-[Emil. | Snake Game](https://emil799.github.io/Snake%20Game/snake-game/)
+[Emil. | Snake Game with React](https://emil799.github.io/Snake-Game-React/)
