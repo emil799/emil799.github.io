@@ -18,26 +18,28 @@ body::-webkit-scrollbar {
   body {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
-    overscroll-behavior: none;
+    /* overscroll-behavior: none; */
   }
 html{
     scroll-behavior: smooth;
-    overscroll-behavior: none;
+    /* overscroll-behavior: none; */
 }
 body:not(.dark-theme) {
   background: #9aaed7;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   color: #fff;
 }
 body.light-theme{
+  /* background: #8b9dc3; */
   background: linear-gradient(315deg, #6a93cb, #a4bfef 74%);
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: #fff;
 }
 body.dark-theme{
+  /* background: #5d5d5d; */
   background: linear-gradient(to right, #868f96 0%, #596164 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: #fff;
 }
 body:not(.dark-theme) #about {
