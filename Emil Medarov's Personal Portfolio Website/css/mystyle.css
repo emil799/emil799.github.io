@@ -1392,6 +1392,10 @@ nav .fa-solid{
     .skills{
       margin-right: 20%;
     }
+    #icon-cloud-container{
+      width: 250px;
+      height: 250px;
+    }
     .about-col-1{
         margin-bottom: 30px;
     }
@@ -1495,6 +1499,10 @@ nav .fa-solid{
     }
     .about-col-1, .about-col-2, #icon-cloud-container{
         flex-basis: 100%;
+    }
+    #icon-cloud-container{
+      width: 300px;
+      height: 300px;
     }
     .skills{
       margin-right: 20%;
