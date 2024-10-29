@@ -18,16 +18,22 @@ body::-webkit-scrollbar {
   body {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+    overscroll-behavior: none;
   }
 html{
     scroll-behavior: smooth;
+    overscroll-behavior: none;
 }
 body:not(.dark-theme) {
   background: #9aaed7;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: #fff;
 }
 body.light-theme{
   background: linear-gradient(315deg, #6a93cb, #a4bfef 74%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: #fff;
 }
 body.dark-theme{
