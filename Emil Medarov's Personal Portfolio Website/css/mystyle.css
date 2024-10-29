@@ -27,12 +27,12 @@ body:not(.dark-theme) {
   color: #fff;
 }
 body.light-theme{
-  background: #8b9dc3;
+  background: linear-gradient(315deg, #6a93cb, #a4bfef 74%);
   color: #fff;
 }
 body.dark-theme{
-    background: #5d5d5d;
-    color: #fff;
+  background: linear-gradient(to right, #868f96 0%, #596164 100%);
+  color: #fff;
 }
 body:not(.dark-theme) #about {
   color: #fff;
@@ -1015,7 +1015,7 @@ nav ul li a:hover::after{
 
 }
 .about-col-1{
-    flex-basis: 35%;
+    flex-basis: 20%;
 
 }
 .about-col-1 img{
@@ -1023,7 +1023,7 @@ nav ul li a:hover::after{
     border-radius: 15px;
 }
 .about-col-2{
-    flex-basis: 60%;
+    flex-basis: 45%;
 }
 
 .sub-title{
@@ -1069,7 +1069,32 @@ nav ul li a:hover::after{
 .tab-contents.active-tab{
     display: block;
 }
+#icon-cloud-container {
+  flex-basis: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 400px;
+  height: 400px;
+  /* overflow: hidden; */
+  padding-top: 40px;
+}
 
+#icon-cloud {
+  display: flex;
+  /* position: absolute;
+  top: -100;
+  left: 500px; */
+  width: 100%;
+  height: 100%;
+  /* background-color: #f2f2f2; */
+  background-color: transparent;
+}
+
+#icon-list {
+  display: none; /* Hide the static list, only use images as data sources */
+}
 #scrollToTopBtn {
   position: fixed;
   bottom: 80px;
@@ -1361,8 +1386,11 @@ nav .fa-solid{
     .sub-title{
         font-size: 40px;
     }
-    .about-col-1, .about-col-2{
+    .about-col-1, .about-col-2, #icon-cloud-container{
         flex-basis: 100%;
+    }
+    .skills{
+      margin-right: 20%;
     }
     .about-col-1{
         margin-bottom: 30px;
@@ -1465,8 +1493,11 @@ nav .fa-solid{
     .sub-title{
         font-size: 40px;
     }
-    .about-col-1, .about-col-2{
+    .about-col-1, .about-col-2, #icon-cloud-container{
         flex-basis: 100%;
+    }
+    .skills{
+      margin-right: 20%;
     }
     .about-col-1{
         margin-bottom: 30px;
