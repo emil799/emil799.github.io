@@ -29,17 +29,17 @@ body:not(.dark-theme) {
   color: #fff;
 }
 body.light-theme{
-  /* background: #8b9dc3; */
-  background: linear-gradient(315deg, #6a93cb, #a4bfef 74%);
+  background: #a4bfef;
+  /* background: linear-gradient(315deg, #6a93cb, #a4bfef 74%);
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: fixed; */
   color: #fff;
 }
 body.dark-theme{
-  /* background: #5d5d5d; */
-  background: linear-gradient(to right, #868f96 0%, #596164 100%);
+  background: #5d5d5d;
+  /* background: linear-gradient(to right, #868f96 0%, #596164 100%);
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: fixed; */
   color: #fff;
 }
 body:not(.dark-theme) #about {
