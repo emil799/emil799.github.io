@@ -27,7 +27,7 @@ body:not(.dark-theme) {
     color: #fff;
   }
   body.light-theme{
-    background: #8b9dc3;
+    background: #a4bfef;
     color: #fff;
   }
   body.dark-theme{

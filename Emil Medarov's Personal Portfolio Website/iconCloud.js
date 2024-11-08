@@ -1,6 +1,6 @@
 const canvas = document.getElementById('icon-cloud');
 const ctx = canvas.getContext('2d');
-const icons = document.querySelectorAll('#icon-list li a img');
+const icons = document.querySelectorAll('#icon-list li img');
 const iconObjects = [];
 let rotationX = 0;
 let rotationY = 0;
