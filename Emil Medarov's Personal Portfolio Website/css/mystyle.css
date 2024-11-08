@@ -18,11 +18,11 @@ body::-webkit-scrollbar {
   body {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
-    overscroll-behavior: none;
+    /* overscroll-behavior: none; */
   }
 html{
     scroll-behavior: smooth;
-    overscroll-behavior: none;
+    /* overscroll-behavior: none; */
 }
 body:not(.dark-theme) {
   background: #9aaed7;
