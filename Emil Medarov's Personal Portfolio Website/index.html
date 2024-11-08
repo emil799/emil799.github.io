@@ -423,28 +423,35 @@
     }
 
     // Custom animation function for smooth scrolling with easing
+    let isScrolling = false;  // Флаг за следене на статуса на скролиране
+
     function scrollToTop(duration) {
-            const start = window.pageYOffset || document.documentElement.scrollTop;
-            const startTime = performance.now();
+        if (isScrolling) return;  // Изход ако вече е активирано скролиране
+        isScrolling = true;  // Задаваме флага на истина
 
-            function scrollStep(timestamp) {
-                const currentTime = timestamp || performance.now();
-                const progress = Math.min((currentTime - startTime) / duration, 1);
-                const easing = easeInOutQuad(progress);
+        const start = window.pageYOffset || document.documentElement.scrollTop;
+        const startTime = performance.now();
 
-                window.scrollTo(0, start * (1 - easing));
+        function scrollStep(timestamp) {
+            const currentTime = timestamp || performance.now();
+            const progress = Math.min((currentTime - startTime) / duration, 1);
+            const easing = easeInOutQuad(progress);
 
-                if (progress < 1) {
-                    requestAnimationFrame(scrollStep);
-                }
+            window.scrollTo(0, start * (1 - easing));
+
+            if (progress < 1) {
+                requestAnimationFrame(scrollStep);
+            } else {
+                isScrolling = false;  // Възстановяваме флага след като скролването завърши
             }
-
-            function easeInOutQuad(t) {
-                return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-            }
-
-            requestAnimationFrame(scrollStep);
         }
+
+        function easeInOutQuad(t) {
+            return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        }
+
+        requestAnimationFrame(scrollStep);
+    }
 
     // Event listener for scrolling to toggle the visibility of the button
     window.addEventListener('scroll', toggleScrollToTopBtn);
