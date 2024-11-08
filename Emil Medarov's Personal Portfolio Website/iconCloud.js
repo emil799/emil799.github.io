@@ -1,5 +1,5 @@
-const canvas = document.getElementById('icon-cloud');
-const ctx = canvas.getContext('2d');
+const canvasParticle = document.getElementById('icon-cloud');
+const ctx2 = canvasParticle.getContext('2d');
 const icons = document.querySelectorAll('#icon-list li img');
 const iconObjects = [];
 let rotationX = 0;
@@ -33,7 +33,7 @@ function setupIcons() {
 
 // Обновяване на позициите и рендериране на иконите с въртене
 function render() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx2.clearRect(0, 0, canvasParticle.width, canvasParticle.height);
 
     iconObjects.forEach(icon => {
         // Приложение на ротационни трансформации
@@ -48,18 +48,18 @@ function render() {
 
         // Приложение на зуум
         const scale = 1 / zoomLevel;
-        const x2d = canvas.width / 2 + x * scale;
-        const y2d = canvas.height / 2 + y * scale;
+        const x2d = canvasParticle.width / 2 + x * scale;
+        const y2d = canvasParticle.height / 2 + y * scale;
 
         // Рендериране на иконата
         const img = new Image();
         img.src = icon.element.src;
 
-        ctx.save(); // Запазваме състоянието на контекста
-        ctx.filter = 'drop-shadow(1px 2px 2.5px rgba(200, 200, 200, 0.5))'; // Светлосива сянка с лек offset
-        ctx.drawImage(img, x2d - icon.size / 2, y2d - icon.size / 2, icon.size * scale, icon.size * scale);
-        ctx.restore(); // Възстановяваме състоянието на контекста
-        // ctx.drawImage(img, x2d - icon.size / 2, y2d - icon.size / 2, icon.size * scale, icon.size * scale);
+        ctx2.save(); // Запазваме състоянието на контекста
+        ctx2.filter = 'drop-shadow(1px 2px 2.5px rgba(200, 200, 200, 0.5))'; // Светлосива сянка с лек offset
+        ctx2.drawImage(img, x2d - icon.size / 2, y2d - icon.size / 2, icon.size * scale, icon.size * scale);
+        ctx2.restore(); // Възстановяваме състоянието на контекста
+        // ctx2.drawImage(img, x2d - icon.size / 2, y2d - icon.size / 2, icon.size * scale, icon.size * scale);
     });
 
     // Обновяване на ротацията с инерция
@@ -70,30 +70,30 @@ function render() {
 }
 
 // Събитие за движение на мишката за задаване на посоката на ротация
-canvas.addEventListener('mousemove', (event) => {
+canvasParticle.addEventListener('mousemove', (event) => {
     if (!isMouseInside) return;
 
-    const rect = canvas.getBoundingClientRect();
+    const rect = canvasParticle.getBoundingClientRect();
     const mouseX = event.clientX - rect.left;
     const mouseY = event.clientY - rect.top;
 
     // Изчисляване на нова скорост на ротация в зависимост от позицията на мишката
-    rotationSpeedY = ((mouseX - canvas.width / 2) / canvas.width) * 0.03;
-    rotationSpeedX = ((mouseY - canvas.height / 2) / canvas.height) * 0.03;
+    rotationSpeedY = ((mouseX - canvasParticle.width / 2) / canvasParticle.width) * 0.03;
+    rotationSpeedX = ((mouseY - canvasParticle.height / 2) / canvasParticle.height) * 0.03;
 });
 
 // Следене дали курсорът е вътре в канваса, за да активира ротацията
-canvas.addEventListener('mouseenter', () => {
+canvasParticle.addEventListener('mouseenter', () => {
     isMouseInside = true;
 });
 
-canvas.addEventListener('mouseleave', () => {
+canvasParticle.addEventListener('mouseleave', () => {
     isMouseInside = false;
     // Поддържаме текущата посока на въртене, без промяна на скоростта
 });
 
 // Събитие за въртене на колелото на мишката за зуум
-canvas.addEventListener('wheel', (event) => {
+canvasParticle.addEventListener('wheel', (event) => {
     // Увеличаване на зуум нивото при scroll up и намаляване при scroll down
     zoomLevel -= event.deltaY * 0.001;
     zoomLevel = Math.min(Math.max(0.5, zoomLevel), 2); // Ограничаване на зуум нивото

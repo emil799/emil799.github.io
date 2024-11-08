@@ -18,11 +18,11 @@ body::-webkit-scrollbar {
   body {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
-    /* overscroll-behavior: none; */
+    overscroll-behavior: none;
   }
 html{
     scroll-behavior: smooth;
-    /* overscroll-behavior: none; */
+    overscroll-behavior: none;
 }
 body:not(.dark-theme) {
   background: #9aaed7;
@@ -1333,6 +1333,9 @@ nav .fa-solid{
     #canvas{
       display: none;
     }
+    .skills, #icon-cloud-container, #icon-cloud{
+      display: none;
+    }
     #header{
         background-image: url(../images/phone-background.png);
     }
@@ -1394,12 +1397,13 @@ nav .fa-solid{
     .sub-title{
         font-size: 40px;
     }
-    .about-col-1, .about-col-2, #icon-cloud-container{
+    .about-col-1, .about-col-2{
         flex-basis: 100%;
     }
-    .skills{
+    /* .skills{
       margin-right: 20%;
-    }
+      display: none;
+    } */
     #icon-cloud-container{
       width: 250px;
       height: 250px;
@@ -1442,8 +1446,11 @@ nav .fa-solid{
     
 }
 /*--------design for bigger screens----------*/
-@media screen and (max-width:1200px) and (min-width:600px){
+@media screen and (max-width:1400px) and (min-width:600px){
     #canvas{
+      display: none;
+    }
+    .skills, #icon-cloud-container, #icon-cloud{
       display: none;
     }
     #header{
@@ -1505,16 +1512,17 @@ nav .fa-solid{
     .sub-title{
         font-size: 40px;
     }
-    .about-col-1, .about-col-2, #icon-cloud-container{
+    .about-col-1, .about-col-2{
         flex-basis: 100%;
     }
-    #icon-cloud-container{
+    /* #icon-cloud-container{
       width: 300px;
       height: 300px;
-    }
-    .skills{
+    } */
+    /* .skills{
       margin-right: 20%;
-    }
+      display: none;
+    } */
     .about-col-1{
         margin-bottom: 30px;
     }
