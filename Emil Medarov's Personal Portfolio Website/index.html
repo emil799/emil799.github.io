@@ -39,13 +39,13 @@
                     <li><a href="#contact">Contact</a></li>
                     <li><div id="sound">
                         <audio id="myAudio">
-                          <source src="Codeko - Crest [NCS Release].mp3" />
+                          <source src="Forty Below.mp3" />
                         </audio>
                         <i class="fab fa-soundcloud sound-cloud"></i>
                         <span>Sound</span>
                         <div class="on-off">
                           <span id="off">OFF</span>
-                          <span id="on">On</span>
+                          <span id="on">ON</span>
                         </div>
                     </div></li>
                     <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
@@ -136,11 +136,13 @@
                         In 2024, I received a bachelor's degree from Plovdiv University<br>
                         "Paisii Hilendarski", majoring in "Informatics".<br>
                         I'm from the class of 2020.<br>
+                        I'm now studying in the same university, majoring in<br>
+                        Software engineering and technologies.<br>
                         I have a good knowledge of English(spoken and written), I<br>
                         also learned German, but I'm not that good at it...<br>
                         I have computer skills.<br>
                         I'm interested in HTML/CSS/Javascript,<br>
-                        Java/Swing, C/C++, C#, SQL/MySQL, Q.A.<br>
+                        Java/Swing, Spring Boot, C++, C#, SQL, MySQL, Q.A.<br>
                         and PHP.<br>
                         I hope to do an internship.
                     </p>
@@ -167,14 +169,14 @@
                     </div>
                     <div class="tab-contents" id="education">
                         <ul>
-                            <li><span>2024 - Current</span><br>I am considering studying a master's degree.</li>
+                            <li><span>2024 - Current</span><br>I am studying master's degree.</li>
                             <li><span>2024</span><br>Graduated  from Plovdiv University "Paisii Hilendarski".</li>
                             <li><span>2020</span><br>Graduated from "Hristo Botev" Language high school.</li>
                         </ul>
                     </div>
 
                 </div>
-                <div class="skills">
+                <!-- <div class="skills">
                     <div id="icon-cloud-container">
                         <canvas id="icon-cloud" width="500" height="500">
                           Your browser does not support the canvas element.
@@ -201,7 +203,7 @@
                           <li><img src="images/docker.svg" alt="Docker" loading="lazy"></a></li>
                           <li><img src="images/nginx.svg" alt="NGINX" loading="lazy"></a></li>
                         </ul>
-                      </div>
+                      </div> -->
                 </div>
             </div>
         </div>
@@ -300,9 +302,15 @@
         </div>
     </div>
     <div class="copyright">
-        <p>Copyright © Emil. 2022 - 2023</p>
+        <p>Copyright © Emil. 2022 - 2025</p>
     </div>
 </div>
+
+<script>
+  var audio = document.getElementById("myAudio");
+  audio.volume = 0.075;
+</script>
+
 <script src="iconCloud.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
